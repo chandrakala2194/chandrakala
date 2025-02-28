@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Satisfaction Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fdfbee;
+            margin-top: 100px;
+        }
+        .container {
+            display: inline-block;
+            padding: 40px;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h2 {
+            margin-bottom: 30px;
+        }
+        .emoji {
+            display: inline-block;
+            margin: 20px;
+            font-size: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .emoji:hover {
+            transform: scale(1.2);
+        }
+        .selected {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>How satisfied are you with our customer support performance?</h2>
+    <div>
+        <span class="emoji" onclick="selectEmoji(this, 'Unhappy')">😔</span>
+        <span class="emoji" onclick="selectEmoji(this, 'Neutral')">😐</span>
+        <span class="emoji" onclick="selectEmoji(this, 'Satisfied')">😍</span>
+    </div>
+    <button onclick="submitReview()">Send Review</button>
+</div>
+
+<script>
+    let selected = null;
+
+    function selectEmoji(element, value) {
+        if (selected) {
+            selected.classList.remove("selected");
+        }
+        selected = element;
+        selected.classList.add("selected");
+        selected.dataset.value = value;
+    }
+
+    function submitReview() {
+        if (selected) {
+            alert("You selected: " + selected.dataset.value);
+        } else {
+            alert("Please select an emoji before submitting.");
+        }
+    }
+</script>
+
+</body>
+</html>
